@@ -1,0 +1,31 @@
+# MPLAB IDE generated this makefile for use with GNU make.
+# Project: My_EE4_Project.mcp
+# Date: Thu May 15 19:36:07 2014
+
+AS = MPASMWIN.exe
+CC = mcc18.exe
+LD = mplink.exe
+AR = mplib.exe
+RM = rm
+
+output/My_EE4_Project.cof : output/config.o output/main.o output/pwm_process.o output/stepper_process.o output/adc_process.o
+	$(LD) /l"d:\MCC18\lib" /k"d:\MCC18\bin\LKR" "EE4_18f2550.lkr" "output\config.o" "output\main.o" "output\pwm_process.o" "output\stepper_process.o" "output\adc_process.o" /u_CRUNTIME /u_DEBUG /z__MPLAB_BUILD=1 /z__MPLAB_DEBUG=1 /o"output\My_EE4_Project.cof" /M"output\My_EE4_Project.map" /W
+
+output/config.o : config.c ../../MCC18/h/timers.h stepper_process.h config.c ../../MCC18/h/p18cxxx.h ../../MCC18/h/p18f2550.h config.h ../../MCC18/h/pconfig.h
+	$(CC) -p=18F2550 /i"d:\MCC18\h" "config.c" -fo="output\config.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+output/main.o : main.c ../../MCC18/h/timers.h ../../MCC18/h/adc.h stepper_process.h ../../MCC18/h/delays.h main.c ../../MCC18/h/p18cxxx.h ../../MCC18/h/p18f2550.h config.h ../../MCC18/h/pconfig.h adc_process.h pwm_process.h
+	$(CC) -p=18F2550 /i"d:\MCC18\h" "main.c" -fo="output\main.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+output/pwm_process.o : pwm_process.c ../../MCC18/h/p18cxxx.h ../../MCC18/h/p18f2550.h pwm_process.h
+	$(CC) -p=18F2550 /i"d:\MCC18\h" "pwm_process.c" -fo="output\pwm_process.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+output/stepper_process.o : stepper_process.c stepper_process.h ../../MCC18/h/timers.h stepper_process.c ../../MCC18/h/pconfig.h ../../MCC18/h/p18cxxx.h ../../MCC18/h/p18f2550.h
+	$(CC) -p=18F2550 /i"d:\MCC18\h" "stepper_process.c" -fo="output\stepper_process.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+output/adc_process.o : adc_process.c ../../MCC18/h/adc.h adc_process.c adc_process.h ../../MCC18/h/p18cxxx.h ../../MCC18/h/p18f2550.h ../../MCC18/h/pconfig.h
+	$(CC) -p=18F2550 /i"d:\MCC18\h" "adc_process.c" -fo="output\adc_process.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+clean : 
+	$(RM) "output\config.o" "output\main.o" "output\pwm_process.o" "output\stepper_process.o" "output\adc_process.o" "output\My_EE4_Project.cof" "output\My_EE4_Project.hex"
+
